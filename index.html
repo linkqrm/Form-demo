@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- ==========================================
+         META TAGS Y CONFIGURACIÓN
+         ========================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulario de registro profesional - Complete su perfil para crear su landing page personalizada">
+    
+    <title>Registro de Perfil Profesional</title>
+    
+    <!-- ==========================================
+         TAILWIND CSS CDN
+         ========================================== -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- ==========================================
+         GOOGLE FONTS - INTER
+         ========================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- ==========================================
+         FONT AWESOME PARA ICONOS
+         ========================================== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ==========================================
+         ESTILOS PERSONALIZADOS
+         ========================================== -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ==========================================
+         CONTENEDOR PRINCIPAL
+         ========================================== -->
+    <div class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- ==========================================
+                 HEADER / TÍTULO
+                 ========================================== -->
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full mb-4 shadow-lg">
+                    <i class="fas fa-user-md text-white text-2xl"></i>
+                </div>
+                <h1 class="text-4xl font-bold text-gray-900 mb-2">
+                    Registro Profesional
+                </h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Complete el formulario con su información profesional para generar su landing page personalizada
+                </p>
+            </div>
+
+            <!-- ==========================================
+                 FORMULARIO PRINCIPAL
+                 IMPORTANTE: Configuración para webhook
+                 - method="POST" para enviar datos
+                 - enctype="multipart/form-data" para archivos
+                 - action apunta al webhook de n8n
+                 ========================================== -->
+            <form 
+                id="professionalForm" 
+                method="POST" 
+                action="[YOUR_N8N_WEBHOOK_URL]"
+                enctype="multipart/form-data"
+                class="bg-white rounded-2xl shadow-xl overflow-hidden"
+            >
+                <!-- ==========================================
+                     SECCIÓN 1: INFORMACIÓN PERSONAL Y CONTACTO
+                     ========================================== -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <i class="fas fa-user section-icon"></i>
+                        <h2 class="section-title">Información Personal y Contacto</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <!-- Fila 1: Nombre Completo y Título Profesional -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Nombre Completo -->
+                            <div class="form-group">
+                                <label for="fullName" class="form-label">
+                                    <i class="fas fa-user text-blue-500"></i>
+                                    Nombre Completo *
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="fullName" 
+                                    name="fullName" 
+                                    required
+                                    placeholder="Ej: Dr. Juan Pérez García"
+                                    class="form-input"
+                                >
+                            </div>
+
+                            <!-- Título Profesional -->
+                            <div class="form-group">
+                                <label for="career" class="form-label">
+                                    <i class="fas fa-briefcase text-blue-500"></i>
+                                    Título Profesional / Carrera *
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="career" 
+                                    name="career" 
+                                    required
+                                    placeholder="Ej: Ginecólogo - Obstetra"
+                                    class="form-input"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Fila 2: Teléfonos -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Teléfono de Contacto -->
+                            <div class="form-group">
+                                <label for="contactPhone" class="form-label">
+                                    <i class="fas fa-phone text-blue-500"></i>
+                                    Teléfono de Contacto
+                                </label>
+                                <input 
+                                    type="tel" 
+                                    id="contactPhone" 
+                                    name="contactPhone"
+                                    placeholder="Ej: +591 70123456"
+                                    class="form-input"
+                                >
+                            </div>
+
+                            <!-- WhatsApp -->
+                            <div class="form-group">
+                                <label for="whatsappNumber" class="form-label">
+                                    <i class="fab fa-whatsapp text-green-500"></i>
+                                    Número de WhatsApp
+                                </label>
+                                <input 
+                                    type="tel" 
+                                    id="whatsappNumber" 
+                                    name="whatsappNumber"
+                                    placeholder="Ej: 59170123456"
+                                    class="form-input"
+                                >
+                                <p class="text-sm text-gray-500 mt-1">
+                                    <i class="fas fa-info-circle"></i>
+                                    Solo números, sin espacios ni símbolos
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Fila 3: Email -->
+                        <div class="form-group">
+                            <label for="professionalEmail" class="form-label">
+                                <i class="fas fa-envelope text-blue-500"></i>
+                                Email Profesional *
+                            </label>
+                            <input 
+                                type="email" 
+                                id="professionalEmail" 
+                                name="professionalEmail" 
+                                required
+                                placeholder="doctor@ejemplo.com"
+                                class="form-input"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     SECCIÓN 2: RESUMEN PROFESIONAL E IMAGEN
+                     ========================================== -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <i class="fas fa-id-card section-icon"></i>
+                        <h2 class="section-title">Resumen Profesional e Imagen</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <!-- Biografía Profesional -->
+                        <div class="form-group">
+                            <label for="aboutMe" class="form-label">
+                                <i class="fas fa-file-alt text-blue-500"></i>
+                                Sobre Mí / Biografía Profesional *
+                            </label>
+                            <textarea 
+                                id="aboutMe" 
+                                name="aboutMe" 
+                                rows="6" 
+                                required
+                                placeholder="Describa su experiencia, formación académica, especialidades y filosofía de atención profesional..."
+                                class="form-input resize-y"
+                            ></textarea>
+                            <p class="text-sm text-gray-500 mt-1">
+                                <i class="fas fa-lightbulb"></i>
+                                Incluya información sobre su formación, años de experiencia y áreas de especialización
+                            </p>
+                        </div>
+
+                        <!-- Foto de Perfil -->
+                        <div class="form-group">
+                            <label for="profilePhoto" class="form-label">
+                                <i class="fas fa-camera text-blue-500"></i>
+                                Foto de Perfil Profesional *
+                            </label>
+                            <div class="file-upload-wrapper">
+                                <input 
+                                    type="file" 
+                                    id="profilePhoto" 
+                                    name="profilePhoto" 
+                                    accept="image/*"
+                                    required
+                                    class="file-input"
+                                >
+                                <div class="file-upload-display">
+                                    <div class="file-upload-icon">
+                                        <i class="fas fa-cloud-upload-alt text-4xl text-blue-400"></i>
+                                    </div>
+                                    <p class="file-upload-text">
+                                        <span class="font-semibold text-blue-600">Haga clic para seleccionar</span>
+                                        o arrastre una imagen aquí
+                                    </p>
+                                    <p class="file-upload-hint">
+                                        PNG, JPG, JPEG hasta 10MB
+                                    </p>
+                                </div>
+                                <!-- Preview de imagen -->
+                                <div id="imagePreview" class="image-preview hidden">
+                                    <img id="previewImg" src="" alt="Preview" class="preview-img">
+                                    <button type="button" id="removeImage" class="remove-image-btn">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     SECCIÓN 3: HORARIO SEMANAL (LUNES A VIERNES)
+                     ========================================== -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <i class="fas fa-clock section-icon"></i>
+                        <h2 class="section-title">Horario de Atención (Lunes a Viernes)</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <!-- Horario Matutino -->
+                        <div class="schedule-block">
+                            <h3 class="schedule-title">
+                                <i class="fas fa-sun text-yellow-500"></i>
+                                Horario Matutino
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Desde -->
+                                <div class="form-group">
+                                    <label for="morningFrom" class="form-label">
+                                        Desde *
+                                    </label>
+                                    <input 
+                                        type="time" 
+                                        id="morningFrom" 
+                                        name="morningFrom" 
+                                        required
+                                        class="form-input"
+                                    >
+                                </div>
+                                <!-- Hasta -->
+                                <div class="form-group">
+                                    <label for="morningTo" class="form-label">
+                                        Hasta *
+                                    </label>
+                                    <input 
+                                        type="time" 
+                                        id="morningTo" 
+                                        name="morningTo" 
+                                        required
+                                        class="form-input"
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Horario Vespertino -->
+                        <div class="schedule-block">
+                            <h3 class="schedule-title">
+                                <i class="fas fa-moon text-indigo-500"></i>
+                                Horario Vespertino
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Desde -->
+                                <div class="form-group">
+                                    <label for="afternoonFrom" class="form-label">
+                                        Desde *
+                                    </label>
+                                    <input 
+                                        type="time" 
+                                        id="afternoonFrom" 
+                                        name="afternoonFrom" 
+                                        required
+                                        class="form-input"
+                                    >
+                                </div>
+                                <!-- Hasta -->
+                                <div class="form-group">
+                                    <label for="afternoonTo" class="form-label">
+                                        Hasta *
+                                    </label>
+                                    <input 
+                                        type="time" 
+                                        id="afternoonTo" 
+                                        name="afternoonTo" 
+                                        required
+                                        class="form-input"
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     SECCIÓN 4: UBICACIÓN Y REDES SOCIALES
+                     ========================================== -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <i class="fas fa-map-marker-alt section-icon"></i>
+                        <h2 class="section-title">Ubicación y Redes Sociales</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <!-- Google Maps -->
+                        <div class="form-group">
+                            <label for="locationLink" class="form-label">
+                                <i class="fas fa-location-dot text-red-500"></i>
+                                Enlace de Google Maps
+                            </label>
+                            <input 
+                                type="url" 
+                                id="locationLink" 
+                                name="locationLink"
+                                placeholder="https://maps.google.com/..."
+                                class="form-input"
+                            >
+                            <p class="text-sm text-gray-500 mt-1">
+                                <i class="fas fa-info-circle"></i>
+                                Copie el enlace de compartir desde Google Maps
+                            </p>
+                        </div>
+
+                        <!-- Redes Sociales -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Facebook -->
+                            <div class="form-group">
+                                <label for="facebookUrl" class="form-label">
+                                    <i class="fab fa-facebook text-blue-600"></i>
+                                    Facebook
+                                </label>
+                                <input 
+                                    type="url" 
+                                    id="facebookUrl" 
+                                    name="facebookUrl"
+                                    placeholder="https://facebook.com/..."
+                                    class="form-input"
+                                >
+                            </div>
+
+                            <!-- Instagram -->
+                            <div class="form-group">
+                                <label for="instagramUrl" class="form-label">
+                                    <i class="fab fa-instagram text-pink-600"></i>
+                                    Instagram
+                                </label>
+                                <input 
+                                    type="url" 
+                                    id="instagramUrl" 
+                                    name="instagramUrl"
+                                    placeholder="https://instagram.com/..."
+                                    class="form-input"
+                                >
+                            </div>
+
+                            <!-- LinkedIn -->
+                            <div class="form-group">
+                                <label for="linkedInUrl" class="form-label">
+                                    <i class="fab fa-linkedin text-blue-700"></i>
+                                    LinkedIn
+                                </label>
+                                <input 
+                                    type="url" 
+                                    id="linkedInUrl" 
+                                    name="linkedInUrl"
+                                    placeholder="https://linkedin.com/in/..."
+                                    class="form-input"
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     SECCIÓN: BOTONES DE ACCIÓN
+                     ========================================== -->
+                <div class="form-actions">
+                    <button type="button" id="resetBtn" class="btn-secondary">
+                        <i class="fas fa-undo"></i>
+                        Limpiar Formulario
+                    </button>
+                    <button type="submit" id="submitBtn" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        <span id="submitBtnText">Enviar Información</span>
+                        <span id="submitBtnLoading" class="hidden">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            Enviando...
+                        </span>
+                    </button>
+                </div>
+
+                <!-- ==========================================
+                     NOTA INFORMATIVA
+                     ========================================== -->
+                <div class="form-note">
+                    <i class="fas fa-shield-alt text-blue-500"></i>
+                    <p>
+                        Sus datos están protegidos. La información proporcionada será utilizada únicamente 
+                        para crear su landing page profesional personalizada.
+                    </p>
+                </div>
+            </form>
+
+            <!-- ==========================================
+                 MENSAJES DE ESTADO (SUCCESS/ERROR)
+                 Ocultos por defecto, se muestran con JavaScript
+                 ========================================== -->
+            <div id="successMessage" class="message-box success-message hidden">
+                <div class="message-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="message-content">
+                    <h3 class="message-title">¡Formulario Enviado Exitosamente!</h3>
+                    <p class="message-text">
+                        Su información ha sido recibida correctamente. 
+                        Procesaremos su solicitud y nos pondremos en contacto pronto.
+                    </p>
+                </div>
+            </div>
+
+            <div id="errorMessage" class="message-box error-message hidden">
+                <div class="message-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="message-content">
+                    <h3 class="message-title">Error al Enviar</h3>
+                    <p class="message-text" id="errorText">
+                        Ha ocurrido un error al procesar su solicitud. Por favor, intente nuevamente.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
+    <script src="script.js"></script>
+</body>
+</html>
