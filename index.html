@@ -43,7 +43,7 @@
                  HEADER / TÍTULO
                  ========================================== -->
             <div class="text-center mb-8">
-                <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full mb-4 shadow-lg">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full mb-4 shadow-lg">
                     <i class="fas fa-user-md text-white text-2xl"></i>
                 </div>
                 <h1 class="text-4xl font-bold text-gray-900 mb-2">
@@ -83,7 +83,7 @@
                             <!-- Nombre Completo -->
                             <div class="form-group">
                                 <label for="fullName" class="form-label">
-                                    <i class="fas fa-user text-blue-500"></i>
+                                    <i class="fas fa-user text-green-500"></i>
                                     Nombre Completo *
                                 </label>
                                 <input 
@@ -99,7 +99,7 @@
                             <!-- Título Profesional -->
                             <div class="form-group">
                                 <label for="career" class="form-label">
-                                    <i class="fas fa-briefcase text-blue-500"></i>
+                                    <i class="fas fa-briefcase text-green-500"></i>
                                     Título Profesional / Carrera *
                                 </label>
                                 <input 
@@ -118,7 +118,7 @@
                             <!-- Teléfono de Contacto -->
                             <div class="form-group">
                                 <label for="contactPhone" class="form-label">
-                                    <i class="fas fa-phone text-blue-500"></i>
+                                    <i class="fas fa-phone text-green-500"></i>
                                     Teléfono de Contacto
                                 </label>
                                 <input 
@@ -153,7 +153,7 @@
                         <!-- Fila 3: Email -->
                         <div class="form-group">
                             <label for="professionalEmail" class="form-label">
-                                <i class="fas fa-envelope text-blue-500"></i>
+                                <i class="fas fa-envelope text-green-500"></i>
                                 Email Profesional *
                             </label>
                             <input 
@@ -181,7 +181,7 @@
                         <!-- Biografía Profesional -->
                         <div class="form-group">
                             <label for="aboutMe" class="form-label">
-                                <i class="fas fa-file-alt text-blue-500"></i>
+                                <i class="fas fa-file-alt text-green-500"></i>
                                 Sobre Mí / Biografía Profesional *
                             </label>
                             <textarea 
@@ -201,7 +201,7 @@
                         <!-- Foto de Perfil -->
                         <div class="form-group">
                             <label for="profilePhoto" class="form-label">
-                                <i class="fas fa-camera text-blue-500"></i>
+                                <i class="fas fa-camera text-green-500"></i>
                                 Foto de Perfil Profesional *
                             </label>
                             <div class="file-upload-wrapper">
@@ -215,10 +215,10 @@
                                 >
                                 <div class="file-upload-display">
                                     <div class="file-upload-icon">
-                                        <i class="fas fa-cloud-upload-alt text-4xl text-blue-400"></i>
+                                        <i class="fas fa-cloud-upload-alt text-4xl text-green-400"></i>
                                     </div>
                                     <p class="file-upload-text">
-                                        <span class="font-semibold text-blue-600">Haga clic para seleccionar</span>
+                                        <span class="font-semibold text-green-600">Haga clic para seleccionar</span>
                                         o arrastre una imagen aquí
                                     </p>
                                     <p class="file-upload-hint">
@@ -238,15 +238,21 @@
                 </div>
 
                 <!-- ==========================================
-                     SECCIÓN 3: HORARIO SEMANAL (LUNES A VIERNES)
+                     SECCIÓN 3: HORARIO SEMANAL (LUNES A SÁBADO)
                      ========================================== -->
                 <div class="form-section">
                     <div class="section-header">
                         <i class="fas fa-clock section-icon"></i>
-                        <h2 class="section-title">Horario de Atención (Lunes a Viernes)</h2>
+                        <h2 class="section-title">Horario de Atención</h2>
                     </div>
                     
                     <div class="section-content">
+                        <!-- Título Lunes a Viernes -->
+                        <div class="schedule-day-header">
+                            <i class="fas fa-calendar-week text-green-500"></i>
+                            <h3>Lunes a Viernes</h3>
+                        </div>
+
                         <!-- Horario Matutino -->
                         <div class="schedule-block">
                             <h3 class="schedule-title">
@@ -317,6 +323,104 @@
                                     >
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Separador -->
+                        <div class="schedule-divider"></div>
+
+                        <!-- Título Sábado -->
+                        <div class="schedule-day-header">
+                            <i class="fas fa-calendar-day text-green-500"></i>
+                            <h3>Sábado</h3>
+                        </div>
+
+                        <!-- Checkbox para activar horario de sábado -->
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input 
+                                    type="checkbox" 
+                                    id="saturdayEnabled" 
+                                    name="saturdayEnabled"
+                                    class="checkbox-input"
+                                >
+                                <span class="checkbox-text">Atiendo los sábados</span>
+                            </label>
+                        </div>
+
+                        <!-- Horarios del Sábado (inicialmente ocultos) -->
+                        <div id="saturdaySchedule" class="saturday-schedule hidden">
+                            <!-- Horario Matutino Sábado -->
+                            <div class="schedule-block">
+                                <h3 class="schedule-title">
+                                    <i class="fas fa-sun text-yellow-500"></i>
+                                    Horario Matutino
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <!-- Desde -->
+                                    <div class="form-group">
+                                        <label for="saturdayMorningFrom" class="form-label">
+                                            Desde
+                                        </label>
+                                        <input 
+                                            type="time" 
+                                            id="saturdayMorningFrom" 
+                                            name="saturdayMorningFrom"
+                                            class="form-input"
+                                        >
+                                    </div>
+                                    <!-- Hasta -->
+                                    <div class="form-group">
+                                        <label for="saturdayMorningTo" class="form-label">
+                                            Hasta
+                                        </label>
+                                        <input 
+                                            type="time" 
+                                            id="saturdayMorningTo" 
+                                            name="saturdayMorningTo"
+                                            class="form-input"
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Horario Vespertino Sábado -->
+                            <div class="schedule-block">
+                                <h3 class="schedule-title">
+                                    <i class="fas fa-moon text-indigo-500"></i>
+                                    Horario Vespertino
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <!-- Desde -->
+                                    <div class="form-group">
+                                        <label for="saturdayAfternoonFrom" class="form-label">
+                                            Desde
+                                        </label>
+                                        <input 
+                                            type="time" 
+                                            id="saturdayAfternoonFrom" 
+                                            name="saturdayAfternoonFrom"
+                                            class="form-input"
+                                        >
+                                    </div>
+                                    <!-- Hasta -->
+                                    <div class="form-group">
+                                        <label for="saturdayAfternoonTo" class="form-label">
+                                            Hasta
+                                        </label>
+                                        <input 
+                                            type="time" 
+                                            id="saturdayAfternoonTo" 
+                                            name="saturdayAfternoonTo"
+                                            class="form-input"
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="text-sm text-gray-500 mt-2">
+                                <i class="fas fa-info-circle"></i>
+                                Deje los campos vacíos si solo atiende en un horario (matutino o vespertino)
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -422,7 +526,7 @@
                      NOTA INFORMATIVA
                      ========================================== -->
                 <div class="form-note">
-                    <i class="fas fa-shield-alt text-blue-500"></i>
+                    <i class="fas fa-shield-alt text-green-500"></i>
                     <p>
                         Sus datos están protegidos. La información proporcionada será utilizada únicamente 
                         para crear su landing page profesional personalizada.
