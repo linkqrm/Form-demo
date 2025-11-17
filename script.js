@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initFormSubmission();
     initResetButton();
     initScrollToTop();
+    initSaturdaySchedule();
 });
 
 // ==========================================
@@ -216,6 +217,70 @@ function validateField(field) {
 }
 
 // ==========================================
+// FUNCIÓN: INICIALIZAR HORARIO DE SÁBADO
+// Mostrar/ocultar horarios del sábado según checkbox
+// ==========================================
+function initSaturdaySchedule() {
+    const saturdayCheckbox = document.getElementById('saturdayEnabled');
+    const saturdaySchedule = document.getElementById('saturdaySchedule');
+    const saturdayInputs = saturdaySchedule.querySelectorAll('input[type="time"]');
+
+    // Cambiar visibilidad al hacer clic en el checkbox
+    saturdayCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            // Mostrar horarios del sábado con animación
+            saturdaySchedule.classList.remove('hidden');
+            setTimeout(() => {
+                saturdaySchedule.style.opacity = '1';
+            }, 10);
+            
+            console.log('📅 Horario de sábado habilitado');
+        } else {
+            // Ocultar y limpiar horarios del sábado
+            saturdaySchedule.style.opacity = '0';
+            setTimeout(() => {
+                saturdaySchedule.classList.add('hidden');
+                // Limpiar valores de los inputs
+                saturdayInputs.forEach(input => {
+                    input.value = '';
+                    removeFieldError(input);
+                });
+            }, 300);
+            
+            console.log('📅 Horario de sábado deshabilitado');
+        }
+    });
+
+    // Validación de horarios del sábado
+    const satMorningFrom = document.getElementById('saturdayMorningFrom');
+    const satMorningTo = document.getElementById('saturdayMorningTo');
+    const satAfternoonFrom = document.getElementById('saturdayAfternoonFrom');
+    const satAfternoonTo = document.getElementById('saturdayAfternoonTo');
+
+    // Validar horario matutino del sábado
+    satMorningTo.addEventListener('change', function() {
+        if (satMorningFrom.value && satMorningTo.value) {
+            if (satMorningTo.value <= satMorningFrom.value) {
+                showFieldError(satMorningTo, 'La hora de finalización debe ser posterior a la de inicio');
+            } else {
+                removeFieldError(satMorningTo);
+            }
+        }
+    });
+
+    // Validar horario vespertino del sábado
+    satAfternoonTo.addEventListener('change', function() {
+        if (satAfternoonFrom.value && satAfternoonTo.value) {
+            if (satAfternoonTo.value <= satAfternoonFrom.value) {
+                showFieldError(satAfternoonTo, 'La hora de finalización debe ser posterior a la de inicio');
+            } else {
+                removeFieldError(satAfternoonTo);
+            }
+        }
+    });
+}
+
+// ==========================================
 // FUNCIÓN: VALIDACIÓN DE HORARIOS
 // Asegurar que el horario "hasta" sea posterior al "desde"
 // ==========================================
@@ -363,6 +428,14 @@ function initFormSubmission() {
                     console.log(`${key}:`, value);
                 }
             }
+            
+            // Log especial para horarios del sábado
+            const saturdayEnabled = formData.get('saturdayEnabled');
+            if (saturdayEnabled === 'on') {
+                console.log('📅 Horario de sábado incluido:');
+                console.log('  Matutino:', formData.get('saturdayMorningFrom'), '-', formData.get('saturdayMorningTo'));
+                console.log('  Vespertino:', formData.get('saturdayAfternoonFrom'), '-', formData.get('saturdayAfternoonTo'));
+            }
 
             // IMPORTANTE: Enviar al webhook
             // Nota: El formulario se envía automáticamente por el método POST
@@ -497,7 +570,7 @@ function initScrollToTop() {
         scrollBtn = document.createElement('button');
         scrollBtn.id = 'scrollToTopBtn';
         scrollBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
-        scrollBtn.className = 'fixed bottom-6 right-6 w-12 h-12 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 opacity-0 pointer-events-none';
+        scrollBtn.className = 'fixed bottom-6 right-6 w-12 h-12 bg-green-600 text-white rounded-full shadow-lg hover:bg-green-700 transition-all duration-300 opacity-0 pointer-events-none';
         scrollBtn.setAttribute('aria-label', 'Volver arriba');
         document.body.appendChild(scrollBtn);
     }
