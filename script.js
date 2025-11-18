@@ -441,7 +441,7 @@ function initFormSubmission() {
             // Nota: El formulario se envía automáticamente por el método POST
             // pero si necesitas procesamiento adicional antes, puedes usar fetch:
             
-            /*
+            
             const response = await fetch(form.action, {
                 method: 'POST',
                 body: formData
@@ -453,7 +453,7 @@ function initFormSubmission() {
 
             const result = await response.json();
             console.log('✅ Respuesta del servidor:', result);
-            */
+            
 
             // Por ahora, simular envío exitoso (comentar cuando uses el webhook real)
             await simulateSubmission();
