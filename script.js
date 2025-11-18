@@ -456,10 +456,10 @@ function initFormSubmission() {
             
 
             // Por ahora, simular envío exitoso (comentar cuando uses el webhook real)
-            await simulateSubmission();
+            //await simulateSubmission();
 
             // Mostrar mensaje de éxito
-            showSuccess();
+            //showSuccess();
 
             // Limpiar formulario después de 2 segundos
             setTimeout(() => {
@@ -482,13 +482,13 @@ function initFormSubmission() {
 // FUNCIÓN: SIMULAR ENVÍO (PARA PRUEBAS)
 // Eliminar esta función cuando uses el webhook real
 // ==========================================
-function simulateSubmission() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve({ success: true });
-        }, 2000); // Simular 2 segundos de carga
-    });
-}
+//function simulateSubmission() {
+  //  return new Promise((resolve) => {
+    //    setTimeout(() => {
+      //      resolve({ success: true });
+      //  }, 2000); // Simular 2 segundos de carga
+  //  });
+//}
 
 // ==========================================
 // FUNCIÓN: INICIALIZAR BOTÓN DE RESET
